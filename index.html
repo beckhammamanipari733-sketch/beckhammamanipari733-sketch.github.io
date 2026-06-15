@@ -3,149 +3,283 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV y Perfil Académico - Beckham Mark Antony Mamani Pari</title>
+    <title>CV - Beckham Mark Antony Mamani Pari</title>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #eef2f7;
             color: #333;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f4f6f9;
         }
-        header {
-            background-color: #003366;
+        nav {
+            background-color: #002855;
+            padding: 14px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav .logo {
             color: #fff;
-            padding: 30px;
-            border-radius: 8px 8px 0 0;
-            text-align: center;
+            font-size: 1.1em;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
-        header h1 {
-            margin: 0;
-            font-size: 2.2em;
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 24px;
         }
-        header p {
-            margin: 5px 0 0;
-            font-size: 1.2em;
+        nav ul a {
             color: #bdc3c7;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: color 0.2s;
         }
-        .container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 0 0 8px 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        nav ul a:hover { color: #fff; }
+        .wrapper {
+            max-width: 960px;
+            margin: 30px auto;
+            padding: 0 20px;
         }
-        h2 {
-            color: #003366;
-            border-bottom: 2px solid #003366;
-            padding-bottom: 5px;
-            margin-top: 25px;
+        .profile-header {
+            background: linear-gradient(135deg, #002855 0%, #1a4a8a 100%);
+            border-radius: 12px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 24px;
         }
-        .profile-info, .data-table {
+        .avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background-color: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: #fff;
+            flex-shrink: 0;
+            border: 3px solid rgba(255,255,255,0.3);
+        }
+        .profile-info h1 {
+            color: #fff;
+            font-size: 1.8em;
+            margin-bottom: 6px;
+        }
+        .profile-info p {
+            color: #bdc3c7;
+            font-size: 1em;
+            margin-bottom: 4px;
+        }
+        .profile-info .contact-line {
+            margin-top: 10px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .contact-line a {
+            color: #7fb3e8;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+        .contact-line a:hover { color: #fff; }
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 28px 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        .card h2 {
+            color: #002855;
+            font-size: 1.1em;
+            border-bottom: 2px solid #002855;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        table {
             width: 100%;
             border-collapse: collapse;
-            margin: 15px 0;
         }
-        .profile-info td {
-            padding: 8px;
+        table th {
+            background-color: #f0f4f9;
+            color: #444;
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 0.9em;
+            border-bottom: 1px solid #dde3ed;
+        }
+        table td {
+            padding: 10px 12px;
+            font-size: 0.92em;
+            border-bottom: 1px solid #f0f0f0;
             vertical-align: top;
         }
-        .profile-info td.label {
-            font-weight: bold;
-            width: 20%;
-            color: #555;
+        table tr:last-child td { border-bottom: none; }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
         }
-        .data-table th, .data-table td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
+        .info-item label {
+            display: block;
+            font-size: 0.8em;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 3px;
         }
-        .data-table th {
-            background-color: #f2f2f2;
+        .info-item span {
+            font-size: 0.95em;
             color: #333;
+            font-weight: 500;
         }
-        .data-table tr:nth-child(even) {
-            background-color: #f9f9f9;
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
         }
-        .production-item {
-            margin-bottom: 15px;
-            padding-left: 15px;
-            border-left: 4px solid #3498db;
-        }
-        .production-title {
-            font-weight: bold;
-            color: #2c3e50;
-        }
-        .production-meta {
+        .skill-item { margin-bottom: 4px; }
+        .skill-item .skill-label {
+            display: flex;
+            justify-content: space-between;
             font-size: 0.9em;
-            color: #7f8c8d;
+            margin-bottom: 5px;
+            color: #444;
         }
+        .skill-bar {
+            height: 6px;
+            background-color: #e0e7f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .skill-bar .fill {
+            height: 100%;
+            background-color: #1a4a8a;
+            border-radius: 10px;
+        }
+        .lang-list { display: flex; gap: 20px; flex-wrap: wrap; }
+        .lang-badge {
+            background-color: #eef2f7;
+            border: 1px solid #d0d9e8;
+            border-radius: 20px;
+            padding: 6px 18px;
+            font-size: 0.9em;
+            color: #002855;
+            font-weight: 500;
+        }
+        .curso-item {
+            display: flex;
+            gap: 14px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            align-items: flex-start;
+        }
+        .curso-item:last-child { border-bottom: none; }
+        .curso-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #1a4a8a;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+        .curso-info .titulo { font-weight: 600; font-size: 0.93em; color: #222; }
+        .curso-info .inst { font-size: 0.85em; color: #888; margin-top: 2px; }
         footer {
-            margin-top: 30px;
             text-align: center;
-            font-size: 0.85em;
-            color: #7f8c8d;
-        }
-        a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
+            padding: 20px;
+            font-size: 0.82em;
+            color: #999;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Beckham Mark Antony Mamani Pari</h1>
-        <p>Estudiante de Ingeniería Estadística e Informática | Universidad Nacional del Altiplano</p>
-    </header>
+<nav>
+    <div class="logo">BMAP</div>
+    <ul>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#formacion">Formación</a></li>
+        <li><a href="#experiencia">Experiencia</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#cursos">Cursos</a></li>
+    </ul>
+</nav>
 
-    <div class="container">
+<div class="wrapper">
 
+    <div class="profile-header">
+        <div class="avatar">BM</div>
+        <div class="profile-info">
+            <h1>Beckham Mark Antony Mamani Pari</h1>
+            <p>Estudiante de Ingeniería Estadística e Informática</p>
+            <p>Universidad Nacional del Altiplano — Puno, Perú</p>
+            <div class="contact-line">
+                <a href="mailto:beckhammamanipari733@gmail.com">✉ beckhammamanipari733@gmail.com</a>
+                <a href="https://beckhammamanipari733-sketch.github.io" target="_blank">🌐 Mi portafolio</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" id="sobre-mi">
         <h2>Datos Personales</h2>
-        <table class="profile-info">
-            <tr>
-                <td class="label">Nacionalidad:</td>
-                <td>Peruana</td>
-            </tr>
-            <tr>
-                <td class="label">Residencia:</td>
-                <td>Com. Quellochico - Huatasani, Puno, Perú</td>
-            </tr>
-            <tr>
-                <td class="label">Áreas de Interés:</td>
-                <td>Data Science, Análisis Estadístico, Series de Tiempo, Machine Learning, Tecnologías de la Información.</td>
-            </tr>
-        </table>
+        <div class="info-grid">
+            <div class="info-item">
+                <label>Nacionalidad</label>
+                <span>Peruana</span>
+            </div>
+            <div class="info-item">
+                <label>Residencia</label>
+                <span>Com. Quellochico - Huatasani,  Huancane, Puno, Perú</span>
+            </div>
+            <div class="info-item">
+                <label>Correo electrónico</label>
+                <span>beckhammamanipari733@gmail.com</span>
+            </div>
+            <div class="info-item">
+                <label>Áreas de Interés</label>
+                <span>Data Science, Series de Tiempo, Machine Learning, TICs</span>
+            </div>
+        </div>
+    </div>
 
+    <div class="card" id="formacion">
         <h2>Formación Académica</h2>
-        <table class="data-table">
+        <table>
             <thead>
                 <tr>
                     <th>Grado / Nivel</th>
-                    <th>Especialidad / Descripción</th>
-                    <th>Centro de Estudios</th>
+                    <th>Especialidad</th>
+                    <th>Institución</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td><strong>Estudiante Universitario</strong></td>
                     <td>Ingeniería Estadística e Informática</td>
-                    <td>Universidad Nacional del Altiplano (Puno, Perú)</td>
+                    <td>Universidad Nacional del Altiplano (Puno)</td>
                 </tr>
                 <tr>
                     <td><strong>Secundaria Completa</strong></td>
                     <td>Educación Secundaria</td>
-                    <td>Institución Educativa - Puno, Perú</td>
+                    <td>Institución Educativa — Puno, Perú</td>
                 </tr>
             </tbody>
         </table>
+    </div>
 
+    <div class="card" id="experiencia">
         <h2>Experiencia y Proyectos Académicos</h2>
-        <table class="data-table">
+        <table>
             <thead>
                 <tr>
                     <th>Proyecto / Actividad</th>
@@ -156,39 +290,108 @@
             <tbody>
                 <tr>
                     <td><strong>Análisis de Series de Tiempo</strong></td>
-                    <td>Aplicación de modelos SARIMA para análisis de datos socioeconómicos en EViews</td>
-                    <td>2025 - 2026</td>
+                    <td>Modelos SARIMA aplicados a datos socioeconómicos en EViews</td>
+                    <td>2025 – 2026</td>
                 </tr>
                 <tr>
-                    <td><strong>Proyecto de Machine Learning</strong></td>
-                    <td>Clustering K-Means aplicado a datasets socioeconómicos con visualización en Python (Jupyter Notebook)</td>
-                    <td>2025 - 2026</td>
+                    <td><strong>Machine Learning</strong></td>
+                    <td>Clustering K-Means sobre datasets socioeconómicos con Python y Jupyter Notebook</td>
+                    <td>2025 – 2026</td>
                 </tr>
                 <tr>
                     <td><strong>Colaboración en Investigación</strong></td>
-                    <td>Apoyo en desarrollo de tesis de investigación con modelos estadísticos y análisis de datos</td>
-                    <td>2025 - 2026</td>
+                    <td>Apoyo en desarrollo de tesis con modelos estadísticos y análisis de datos</td>
+                    <td>2025 – 2026</td>
                 </tr>
                 <tr>
-                    <td><strong>Prácticas en Análisis Econométrico</strong></td>
-                    <td>Modelos ARCH/GARCH, pruebas de heterocedasticidad y raíz unitaria (Test de White, ADF) en EViews</td>
+                    <td><strong>Análisis Econométrico</strong></td>
+                    <td>Modelos ARCH/GARCH, pruebas de heterocedasticidad y raíz unitaria (White, ADF) en EViews</td>
+                    <td>2026</td>
+                </tr>
+                <tr>
+                    <td><strong>Desarrollo Web</strong></td>
+                    <td>Creación y publicación de portafolio personal en GitHub Pages con HTML y CSS</td>
                     <td>2026</td>
                 </tr>
             </tbody>
         </table>
-
-        <h2>Idiomas</h2>
-        <ul>
-            <li><strong>Inglés:</strong> Nivel Básico - Intermedio (Lectura y Comprensión)</li>
-            <li><strong>Quechua:</strong> Nivel Avanzado (Lengua regional)</li>
-            <li><strong>Aymara:</strong> Nivel Avanzado (Lengua materna regional)</li>
-        </ul>
-
     </div>
 
-    <footer>
-        <p>Currículum Vitae Académico — Beckham Mark Antony Mamani Pari | Universidad Nacional del Altiplano, Puno, Perú.</p>
-    </footer>
+    <div class="card" id="habilidades">
+        <h2>Habilidades Técnicas</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <div class="skill-label"><span>Python</span><span>70%</span></div>
+                <div class="skill-bar"><div class="fill" style="width:70%"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-label"><span>EViews</span><span>75%</span></div>
+                <div class="skill-bar"><div class="fill" style="width:75%"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-label"><span>Excel</span><span>80%</span></div>
+                <div class="skill-bar"><div class="fill" style="width:80%"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-label"><span>C++ (CodeBlocks)</span><span>55%</span></div>
+                <div class="skill-bar"><div class="fill" style="width:55%"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-label"><span>Visual Studio Code</span><span>65%</span></div>
+                <div class="skill-bar"><div class="fill" style="width:65%"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-label"><span>HTML / CSS</span><span>60%</span></div>
+                <div class="skill-bar"><div class="fill" style="width:60%"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" id="cursos">
+        <h2>Cursos y Certificaciones</h2>
+        <div class="curso-item">
+            <div class="curso-dot"></div>
+            <div class="curso-info">
+                <div class="titulo">Introducción a Python para Ciencia de Datos</div>
+                <div class="inst">Coursera / Universidad online — 2025</div>
+            </div>
+        </div>
+        <div class="curso-item">
+            <div class="curso-dot"></div>
+            <div class="curso-info">
+                <div class="titulo">Análisis Estadístico con Excel Avanzado</div>
+                <div class="inst">Capacitación Universitaria — UNA Puno, 2025</div>
+            </div>
+        </div>
+        <div class="curso-item">
+            <div class="curso-dot"></div>
+            <div class="curso-info">
+                <div class="titulo">Fundamentos de Machine Learning</div>
+                <div class="inst">Google Digital Academy — 2026</div>
+            </div>
+        </div>
+        <div class="curso-item">
+            <div class="curso-dot"></div>
+            <div class="curso-info">
+                <div class="titulo">Econometría Aplicada con EViews</div>
+                <div class="inst">Curso interno — Facultad de Ingeniería Estadística e Informática, 2026</div>
+            </div>
+        </div>
+
+        <h2 style="margin-top: 24px;">Idiomas</h2>
+        <div class="lang-list" style="margin-top: 14px;">
+            <div class="lang-badge">Español — Nativo</div>
+            <div class="lang-badge">Quechua — Avanzado</div>
+            <div class="lang-badge">Aymara — Avanzado</div>
+            <div class="lang-badge">Inglés — Básico / Intermedio</div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>Currículum Vitae — Beckham Mark Antony Mamani Pari | Universidad Nacional del Altiplano, Puno, Perú.</p>
+</footer>
 
 </body>
 </html>
